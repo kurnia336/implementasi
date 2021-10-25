@@ -8,4 +8,7 @@
 <script src="{{asset('AdminLTE/dist/js/vendor.bundle.base.js')}}"></script>
 <script src="{{asset('AdminLTE/dist/js/off-canvas.js')}}"></script>
 <script src="{{asset('AdminLTE/dist/js/misc.js')}}"></script>
+
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 @yield('script')

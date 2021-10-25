@@ -43,12 +43,12 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="/dataCustomer" class="nav-link">
+                <a href="/customer" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Customer</p>
                 </a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a href="/tambahCust1" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Customer 1</p>
@@ -59,7 +59,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Tambah Customer 2</p>
                 </a>
-              </li>
+              </li> -->
             </ul>
           </li>
           
@@ -72,7 +72,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/barcode" class="nav-link">
+                <a href="/scanner" class="nav-link">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                   Barcode Scanner

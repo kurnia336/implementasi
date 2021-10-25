@@ -2,15 +2,23 @@
 
 namespace App;
 
+// use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class customer extends Model
+class Customer extends Model
 {
-    protected $table = "customer";
-    protected $primaryKey =  "id_customer";
-    protected $fillable = ['nama','alamat','foto','file_path','id_kel'];
+    // use HasFactory;
+    public $table = "customer";
+    protected $primaryKey = 'id_customer';
+    protected $fillable = [
+        'nama',
+        'alamat',
+        'foto',
+        'path',
+        'id_kelurahan'
+    ];
 
-    public function ec_subdistricts(){
-        return $this->belongsTo(ec_subdistricts::class,'id_kel');
+    public function kelurahan(){
+        return $this->belongsTo(Kelurahan::class,'id_kelurahan');
     }
 }

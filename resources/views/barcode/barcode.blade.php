@@ -1,9 +1,8 @@
 @extends('Template.master')
 
-@section('title','Scan Barcode')
+@section('title', 'Data Barang')
 
 @section('content')
-
 
 <main class="wrapper" style="padding-top:2em">
 
@@ -84,5 +83,4 @@
         })
     })
   </script>
-
 @endsection
