@@ -33,8 +33,8 @@
                   </p>
                 </a>
               </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
+          <li class="nav-item menu">
+            <a href="#" class="nav-link {{ request()->is('customer') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Customer
@@ -47,7 +47,7 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Data Customer</p>
                 </a>
-              </li>
+          </li>
               <!-- <li class="nav-item">
                 <a href="/tambahCust1" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
@@ -63,8 +63,8 @@
             </ul>
           </li>
           
-          <li class="nav-item">
-                <a href="/barang" class="nav-link">
+              <li class="nav-item">
+                <a href="/barang" class="nav-link {{ request()->is('barang') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                   Data Barang
@@ -72,13 +72,41 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="/scanner" class="nav-link">
+                <a href="/scanner" class="nav-link {{ request()->is('scanner') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                   Barcode Scanner
                   </p>
                 </a>
               </li>
+              <!-- <li class="nav-item">
+                <a href="/toko" class="nav-link">
+                  <i class="nav-icon fas fa-th"></i>
+                  <p>
+                  Toko
+                  </p>
+                </a>
+              </li> -->
+              
+          <li class="nav-item menu">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Toko
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/toko" class="nav-link {{ request()->is('toko') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Data Toko</p>
+                </a>
+                <a href="/scan_toko" class="nav-link {{ request()->is('scan_toko') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Scan Toko</p>
+                </a>
+          </li>
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

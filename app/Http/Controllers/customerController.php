@@ -9,6 +9,8 @@ use App\Provinsi;
 use App\Kota;
 use App\Kecamatan;
 use App\Kelurahan;
+use App\Imports\CustomerImport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CustomerController extends Controller
 {
@@ -54,6 +56,31 @@ class CustomerController extends Controller
     {        
         $kelurahan = DB::table("villages")->where("district_id",$id)->pluck("name","id");
         return json_encode($kelurahan);
+    }
+
+    public function importExcel(Request $request)
+    {
+        // validasi
+		$this->validate($request, [
+			'excel' => 'required|mimes:xls,xlsx'
+		]);
+        if($request->excel){
+               // menangkap file excel
+                $file = $request->file('excel')->store('import');
+                // import data
+                $import = new CustomerImport;
+                $import->import($file);
+                // dd($import->failures());
+                if($import->failures()) {
+                    return back()->withFailures($import->failures());
+                }
+                // $file = $request->file('excel');
+                // Excel::import(new CustomerImport, $file);
+                // //dd($import->errors());
+                // //(new CustomerImport)->import($file);
+                // // alihkan halaman kembali
+                // return back()->withStatus('file excel is success imported');
+        }
     }
 
     ////////////////////////////////

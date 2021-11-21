@@ -17,7 +17,7 @@ class Customer extends Model
         'path',
         'id_kelurahan'
     ];
-
+    public $timestamps = false;
     public function kelurahan(){
         return $this->belongsTo(Kelurahan::class,'id_kelurahan');
     }

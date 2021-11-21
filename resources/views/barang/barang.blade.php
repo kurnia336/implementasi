@@ -19,6 +19,9 @@
                                 <caption>List of Barang</caption>
                                     <thead class="thead-dark">
                                         <tr>
+                                        <th align="center">
+                                            <input name="select_all" value="" id="example-select-all" type="checkbox" /></th>
+                                        </th>
                                             <th>NO</th>
                                             <th>NAMA</th>
                                             <th>BARCODE</th>
@@ -28,6 +31,7 @@
                                     <tbody>
                                     @forelse ($barangs as $barang)
                                     <tr>
+                                        <td>{{ $barang->barcode_kode }}</td>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $barang->nama_barang }}</td>
                                         
@@ -52,6 +56,9 @@
                                     </tbody>
                                     <tfoot class="thead-dark">
                                         <tr>
+                                        <th align="center">
+                                            <input name="select_all" value="" id="example-select-all" type="checkbox" /></th>
+                                        </th>
                                             <th>NO</th>
                                             <th>NAMA</th>
                                             <th>BARCODE</th>
@@ -77,7 +84,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <!-- <div class="modal-body">
                 <form action="{{ url('/barang/cetakpdf/') }}" method="post">
                 @csrf
                     <div class="form-group">
@@ -89,6 +96,20 @@
                         <input type="number" class="form-control" id="kolom_barang" placeholder="kolom Barang" name="kolom_barang" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
+                </form>
+            </div> -->
+            <div class="modal-body">
+                <form action="{{ url('/cetakBarcode/') }}" method="post" >
+                @csrf
+                    <div class="form-group">
+                        <label for="row">Baris</label>
+                        <input type="number" class="form-control" id="row" placeholder="baris Barang" name="row" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="col">Kolom</label>
+                        <input type="number" class="form-control" id="col" placeholder="kolom Barang" name="col" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="generate">Simpan</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -117,11 +138,56 @@ $generatorPNG = new Picqer\Barcode\BarcodeGeneratorPNG();
 <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
      -->
 <script>
-    $(document).ready(function() {
-    $('#tables').DataTable({
-        responsive: true
-    });
-    } );
+    $(document).ready(function (){   
+   var table = $('#tables').DataTable({
+    "paging": false,
+    "responsive": true,
+    "autoWidth": false,  
+    'columnDefs': [{
+         'targets': 0,
+         'searchable':false,
+         'orderable':false,
+         'className': 'dt-body-center',
+         'render': function (data, type, full, meta){
+             return '<input type="checkbox" name="check" value="' 
+                + $('<div/>').text(data).html() + '">';
+         }
+      }],
+      'order': [1, 'asc']
+   });
+   
+ // Handle click on "Select all" control
+   $('#example-select-all').on('click', function(){
+      // Check/uncheck all checkboxes in the table
+      var rows = table.rows({ 'search': 'applied' }).nodes();
+      $('input[type="checkbox"]', rows).prop('checked', this.checked);
+   });
+   // Handle click on checkbox to set state of "Select all" control
+   $('#tables tbody').on('change', 'input[type="checkbox"]', function(){
+      // If checkbox is not checked
+      if(!this.checked){
+         var el = $('#example-select-all').get(0);
+         // If "Select all" control is checked and has 'indeterminate' property
+         if(el && el.checked && ('indeterminate' in el)){
+            // Set visual state of "Select all" control 
+            // as 'indeterminate'
+            el.indeterminate = true;
+         }
+      }
+   });
+   $('#generate').on('click', function(e){
+      var favorite = [];
+      var row =  Number(document.getElementById("row").value);
+      var col =  Number(document.getElementById("col").value);
+      $.each($("input[name='check']:checked"), function(){
+          favorite.push($(this).val());
+      });
+      parameter= "/"+ favorite.join()+"/"+col+"/"+row;
+      url= "{{url('/cetakBarcode')}}";
+      document.location.href=url+parameter;
+       e.preventDefault(); 
+   });
+   });
 </script>
 
 @endsection

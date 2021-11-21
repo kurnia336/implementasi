@@ -16,6 +16,7 @@
         "laravel/framework": "^7.29",
         "laravel/helpers": "^1.4",
         "laravel/tinker": "^2.5",
+        "maatwebsite/excel": "^3.1",
         "milon/barcode": "7.0",
         "picqer/php-barcode-generator": "^2.2"
     },

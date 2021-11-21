@@ -35,12 +35,13 @@ route::view('/home','home');
 // route::get('/dataCustomer','customerController@indexDataCust');
 // route::get('/tambahCust1','customerController@tambahCustomer1');
 // route::get('/tambahCust2','customerController@tambahCustomer2');
-
+Route::post('/customer/export-excel', 'customerController@importExcel' );
 Route::get('tambahCustomer/getcities/{id}','customerController@getCities');
 Route::get('tambahCustomer/getdistricts/{id}','customerController@getDistricts');
 Route::get('tambahCustomer/getsubdistricts/{id}','customerController@getSubdistricts');
 Route::get('cetak_barcode','BarangController@cetak_pdf');
-Route::post('/barang/cetakpdf/','BarangController@cetakTNJ' );
+// Route::post('/barang/cetakpdf/','BarangController@cetakTNJ' );
+Route::get('/cetakBarcode/{id_barang}/{col}/{row}', 'BarangController@cetakPdf');
 
 // Route::post('/tambahCustomer1/store1','customerController@store1');
 // Route::post('/tambahCustomer2/store2','customerController@store2');
@@ -54,6 +55,11 @@ Route::resource('barang', BarangController::class);
 // Route::get('/barang/cetak_barcode',  [App\Http\Controllers\BarangController::class, 'cetak_pdf']);
 
 Route::resource('scanner', ScannerController::class);
+Route::post('/scan_toko/getLocationToko', 'TokoController@getLocationToko');
+Route::post('/scan_toko/getDistanceFromLatLonInKm', 'TokoController@getDistanceFromLatLonInKm');
+Route::get('/cetak_toko/{id}', 'TokoController@cetak_toko');
+Route::get('/scan_toko', 'TokoController@scan_toko');
+Route::resource('toko', TokoController::class);
 // Route::get('/cari_provinsi', [customerController::class,'loadData_provinsi']);
 // Route::get('/cari_kota', [customerController::class,'loadData_kota']);
 // Route::get('/cari_kecamatan', [customerController::class,'loadData_kecamatan']);

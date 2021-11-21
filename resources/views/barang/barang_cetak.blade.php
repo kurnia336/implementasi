@@ -37,7 +37,7 @@ html, body {
     height: 100%; */
 }</style>
 <body>
-    <div class="halaman">
+    <div class="halaman" style="margin-top:-23px;">
         <table>
             <?php
             $stop=1;
@@ -54,12 +54,12 @@ html, body {
                 @if($break < $stop)
                 @if($count <= $break)
                 <td>
-                     <div class="barcode" style="text-align:center;width:143px;height:63px;padding-top: 5px;margin-left:-15px;margin-right:16px;font-size:12px">
+                     <div class="barcode" style="text-align:center;width:143px;height:63px;padding-top: 5px;margin-left:-35px;margin-right:44px;font-size:12px;margin-top:-18px">
                     @if($i >= $baris AND $kolom <= $break)
                      <div class="IsiBarcode" style="display:block">
                         <?php
                              $generator = new Picqer\Barcode\BarcodeGeneratorPNG();
-                             echo '<img style="width: 120px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barang->barcode_kode, $generator::TYPE_CODE_128)) . '">';                                    
+                             echo '<img style="width: 125px;" src="data:image/png;base64,' . base64_encode($generator->getBarcode($barang->barcode_kode, $generator::TYPE_CODE_128)) . '">';                                    
                              /*
                              $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
                              echo $generator->getBarcode($barangs->id_barang, $generator::TYPE_CODE_128);

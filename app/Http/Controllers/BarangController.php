@@ -49,6 +49,32 @@ class BarangController extends Controller
         return view('barang.barang_cetak', compact('barangs','long','baris','kolom'));
     }
 
+    public function cetakPdf(Request $request)
+    {
+        $dataa = $request->id_barang;
+        $datab = explode(",", $dataa);
+        $barang = DB::table('barang')->whereIn('barcode_kode', $datab)->get();
+        $no = 1;
+        $x = 1;
+        $col = $request->col;
+        $row = $request->row;
+        $panjang=(($row-1)*5)+($col-1);
+        $data = array(
+            'menu' => 'Barcode',
+            'barang' => $barang,
+            'no' => $no,
+            'x' => $x,
+            'col' => $col,
+            'row' => $row,
+            'panjang' => $panjang,
+            'submenu' => '',
+        );
+          
+        $customPaper = array(0,0,611.7,469.47);
+        // return PDF::loadView('barang.cetakBarcode', $data)->setPaper($customPaper)->stream('barcode_barang.pdf');
+        return PDF::loadView('barang.cetakBarcode', $data)->stream('barcode_barang.pdf');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

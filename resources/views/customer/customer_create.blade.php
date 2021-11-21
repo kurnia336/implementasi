@@ -14,7 +14,7 @@
                             @csrf
 
                             <div class="form-group">
-                                <label class="font-weight-bold">NAMA CUSTOMERa</label>
+                                <label class="font-weight-bold">NAMA CUSTOMER</label>
                                 <input type="text" class="form-control @error('nama') is-invalid @enderror" style="" id="nama" name="nama" autocomplete="off" required>
                             
                                 <!-- error message untuk title -->
