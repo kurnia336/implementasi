@@ -60,6 +60,8 @@ Route::post('/scan_toko/getDistanceFromLatLonInKm', 'TokoController@getDistanceF
 Route::get('/cetak_toko/{id}', 'TokoController@cetak_toko');
 Route::get('/scan_toko', 'TokoController@scan_toko');
 Route::resource('toko', TokoController::class);
+
+
 // Route::get('/cari_provinsi', [customerController::class,'loadData_provinsi']);
 // Route::get('/cari_kota', [customerController::class,'loadData_kota']);
 // Route::get('/cari_kecamatan', [customerController::class,'loadData_kecamatan']);
