@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('beranda');
+    return view('welcome');
 });
+Route::get('/auth/redirect', 'Auth\LoginController@redirectToProvider');
+Route::get('/auth/callback', 'Auth\LoginController@handleProviderCallback');
 // Route::get('/barang', function () {
 //     return view('barang');
 // });
@@ -71,3 +73,6 @@ Route::resource('toko', TokoController::class);
 // Route::get('tambahCustomer/getdistricts/{id}',[CustomerController::class,'getDistricts']);
 // Route::get('tambahCustomer/getsubdistricts/{id}',[CustomerController::class,'getSubdistricts']);
 // Route::resources('customer', [App\Http\Controllers\customerController::class])->name('customer');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,15 +1,28 @@
 <!-- Sidebar user panel (optional) -->
+<meta name="google-signin-client_id" content="358137896602-u9dge97qt6p7p3vi2clai9m6n97mgrkq.apps.googleusercontent.com">
 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+  
         <div class="image">
-          <img src="{{asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        @if (Auth::guest())
+            <img src="{{asset('AdminLTE/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2" alt="User Image">
+        @else
+            <img src="{{Auth::user()->image}}" class="img-circle elevation-2" alt="User Image">
+        @endif 
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+        @if (Auth::guest())
+            <a href="{{ route('login') }}">Login</a>
+            <a href="{{ route('register') }}">Register</a>
+        @else
+            <a href="#" class="d-block">Hi, {{Auth::user()->name}}</a>
+            <a href="#" class="d-block">{{Auth::user()->provider_id}}</a>
+        @endif 
+         
         </div>
       </div>
 
       <!-- SidebarSearch Form -->
-      <div class="form-inline">
+      <!-- <div class="form-inline">
         <div class="input-group" data-widget="sidebar-search">
           <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
           <div class="input-group-append">
@@ -18,7 +31,7 @@
             </button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -26,7 +39,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                <li class="nav-item">
-                <a href="/" class="nav-link">
+                <a href="/" class="nav-link {{ request()->is('/') ? 'active' : '' }}">
                   <i class="nav-icon fas fa-th"></i>
                   <p>
                   Dashboard
@@ -106,7 +119,27 @@
                   <i class="far fa-circle nav-icon"></i>
                   <p>Scan Toko</p>
                 </a>
+              </li>
+            </ul>
           </li>
-        </ul>
+          @if (Auth::guest())
+            
+          @else
+              <li class="nav-item">
+                <a href="{{ route('logout') }}"
+                  onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();" class="nav-link">
+                  <i class="nav-icon fas fa-power-off"></i>
+                    <!-- <i class="fas fa-sign-out-alt"></i> -->
+                  <p>
+                  {{ __('Logout') }}
+                  </p>
+                  <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                        @csrf
+                                    </form>
+                </a>
+          </li>
+          @endif 
+          
       </nav>
       <!-- /.sidebar-menu -->
