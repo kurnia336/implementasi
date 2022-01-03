@@ -122,6 +122,27 @@
               </li>
             </ul>
           </li>
+          <li class="nav-item menu">
+            <a href="#" class="nav-link ">
+              <i class="nav-icon fas fa-store"></i>
+              <p>
+                Score Board Menu
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="/scoreboard-view" class="nav-link {{ request()->is('scoreboard-view') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Score Board</p>
+                </a>
+                <a href="/scoreboard-console" class="nav-link {{ request()->is('scoreboard-console') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Console</p>
+                </a>
+              </li>
+            </ul>
+          </li>
           @if (Auth::guest())
             
           @else

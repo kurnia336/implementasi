@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ScoreboardController;
 // use App\Http\Controllers\CustomerController;
 // use App\Http\Controllers\BarangController;
 // use App\Http\Controllers\ScannerController;
@@ -62,6 +63,27 @@ Route::post('/scan_toko/getDistanceFromLatLonInKm', 'TokoController@getDistanceF
 Route::get('/cetak_toko/{id}', 'TokoController@cetak_toko');
 Route::get('/scan_toko', 'TokoController@scan_toko');
 Route::resource('toko', TokoController::class);
+
+
+//scoreboard
+Route::get('/scoreboard-view',[ScoreBoardController::class,'index']);
+Route::get('/scoreboard-sse',[ScoreBoardController::class,'sse']);
+Route::get('/scoreboard-console',[ScoreBoardController::class,'console']);
+Route::post('/scoreboard-console/update-period',[ScoreBoardController::class,'updatePeriod']);
+Route::post('/scoreboard-console/reset-period',[ScoreBoardController::class,'resetPeriod']);
+Route::post('/scoreboard-console/update-home-name',[ScoreBoardController::class,'updateHomeName']);
+Route::post('/scoreboard-console/update-home-score',[ScoreBoardController::class,'updateHomeScore']);
+Route::post('/scoreboard-console/reset-home-score',[ScoreBoardController::class,'resetHomeScore']);
+Route::post('/scoreboard-console/update-home-foul',[ScoreBoardController::class,'updateHomeFoul']);
+Route::post('/scoreboard-console/reset-home-foul',[ScoreBoardController::class,'resetHomeFoul']);
+Route::post('/scoreboard-console/update-away-name',[ScoreBoardController::class,'updateAwayName']);
+Route::post('/scoreboard-console/update-away-score',[ScoreBoardController::class,'updateAwayScore']);
+Route::post('/scoreboard-console/reset-away-score',[ScoreBoardController::class,'resetAwayScore']);
+Route::post('/scoreboard-console/update-away-foul',[ScoreBoardController::class,'updateAwayFoul']);
+Route::post('/scoreboard-console/reset-away-foul',[ScoreBoardController::class,'resetAwayFoul']);
+Route::post('/scoreboard-console/update-home-status',[ScoreBoardController::class,'updateHomeStatus']);
+Route::post('/scoreboard-console/update-timer',[ScoreBoardController::class,'updateTimer']);
+Route::post('/update-menit-detik',[ScoreBoardController::class,'update_menit_detik']);
 
 
 // Route::get('/cari_provinsi', [customerController::class,'loadData_provinsi']);
