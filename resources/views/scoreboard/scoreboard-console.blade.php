@@ -79,7 +79,7 @@
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <label for="">Pengaturan Waktu</label>
+            <label for="">Timer Settings</label>
             <div class="row">
                 <div class="col-4">
                     <button class="btn btn-warning" id="reset-time"><i class="fas fa-redo-alt"></i> Reset </button>    
@@ -90,23 +90,23 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <label for="">Pengaturan Musik</label>
+            <label for="">Music Settings</label>
             <div class="row">
                 <div class="col-2">
-                    <h6 class="d-inline-block">1. </h6>
-                    <button type="button" onclick="playAudio1()" class="btn btn-success"><i class="fas fa-music"></i></button>    
+                    <!-- <h6 class="d-inline-block"></h6> -->
+                    <button type="button" onclick="playAudio1()" class="btn btn-success"><i class="fas fa-music"></i>Music 1</button>    
                 </div>
                 <div class="col-2">
-                    <h6 class="d-inline-block">2. </h6>
-                    <button type="button" onclick="playAudio2()" class="btn btn-success"><i class="fas fa-music"></i></button>    
+                    <!-- <h6 class="d-inline-block"></h6> -->
+                    <button type="button" onclick="playAudio2()" class="btn btn-success"><i class="fas fa-music"></i>Music 2</button>    
                 </div>
                 <div class="col-2">
-                    <h6 class="d-inline-block">3. </h6>
-                    <button type="button" onclick="playAudio3()" class="btn btn-success"><i class="fas fa-music"></i></button>    
+                    <!-- <h6 class="d-inline-block"></h6> -->
+                    <button type="button" onclick="playAudio3()" class="btn btn-success"><i class="fas fa-music"></i>Music 3</button>    
                 </div>
                 <div class="col-2">
-                    <h6 class="d-inline-block">4. </h6>
-                    <button type="button" onclick="playAudio4()" class="btn btn-success"><i class="fas fa-music"></i></button>    
+                    <!-- <h6 class="d-inline-block"></h6> -->
+                    <button type="button" onclick="playAudio4()" class="btn btn-success"><i class="fas fa-music"></i>Music 4</button>    
                 </div>
             </div>
         </div>
